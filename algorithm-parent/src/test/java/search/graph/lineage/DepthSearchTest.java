@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NodeSearchTest {
+public class DepthSearchTest {
     @Test
     public void testSearchOneLevel() {
-        NodeSearch search = new NodeSearch();
+        DepthSearch search = new DepthSearch();
         Node root = new Node();
         List<Node> result = search.findSiblings(root);
 
@@ -30,7 +30,7 @@ public class NodeSearchTest {
         a.getChildren().add(ab1);
         a.getChildren().add(ab2);
 
-        NodeSearch search = new NodeSearch();
+        DepthSearch search = new DepthSearch();
         List<Node> result = search.findSiblings(ab2);
 
         assert null != result;
@@ -62,7 +62,7 @@ public class NodeSearchTest {
         ab2.getChildren().add(ab2c2);
 
         // Given a level D node, return all nodes at level D
-        NodeSearch search = new NodeSearch();
+        DepthSearch search = new DepthSearch();
         List<Node> result = search.findSiblings(ab1c1);
 
         assert null != result;
@@ -118,7 +118,7 @@ public class NodeSearchTest {
         ab1c1d1.getChildren().add(ab1c1d1e3);
 
         // Given a level D node, return all nodes at level D
-        NodeSearch search = new NodeSearch();
+        DepthSearch search = new DepthSearch();
         List<Node> result = search.findSiblings(ab1c1d3);
 
         assert null != result;

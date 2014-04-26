@@ -5,11 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
-public class NodeSearch {
-    private static final Logger LOG = LoggerFactory.getLogger(NodeSearch.class);
-    public static void main(String[] args) {
-
-    }
+public class DepthSearch {
+    private static final Logger LOG = LoggerFactory.getLogger(DepthSearch.class);
 
     public List<Node> findSiblings(Node node) {
         List<Node> lineage = listLineage(node);

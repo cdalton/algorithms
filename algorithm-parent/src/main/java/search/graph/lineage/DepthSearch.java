@@ -8,10 +8,15 @@ import java.util.*;
 public class DepthSearch {
     private static final Logger LOG = LoggerFactory.getLogger(DepthSearch.class);
 
-    public List<Node> findSiblings(Node node) {
-        List<Node> lineage = listLineage(node);
-        Node root = lineage.size() > 0 ? lineage.get(lineage.size() -1) : node;
+    /**
+     * For a given node, returns a list of siblings or same depth nodes relative to the root node
+     * @param node
+     * @return
+     */
+    public List<Node> findSiblings(final Node node) {
+        Deque<Node> lineage = listLineage(node);
         int depth = lineage.size(); // depth of current node from root given root is 0 depth
+        Node root = depth > 0 ? lineage.pop() : node;
         return search(root, 0, depth);
     }
 
@@ -21,11 +26,11 @@ public class DepthSearch {
      * @param node
      * @return
      */
-    private List<Node> listLineage(Node node) {
-        List<Node> result = new ArrayList<Node>();
+    private Deque<Node> listLineage(final Node node) {
+        Deque<Node> result = new ArrayDeque<Node>();
         Node current = node.getParent();
         while(current != null) {
-            result.add(current);
+            result.push(current);
             current = current.getParent();
         }
         return result;
@@ -42,7 +47,6 @@ public class DepthSearch {
     private List<Node> search(Node node, final int currentDepth, final int nodeDepth) {
         List<Node> result = new ArrayList<Node>();
         if(currentDepth == nodeDepth) {
-            LOG.debug("Found node at desired depth");
             result.add(node);
         } else {
             for(Node n : node.getChildren()) {

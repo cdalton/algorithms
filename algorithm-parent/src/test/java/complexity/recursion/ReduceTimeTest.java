@@ -19,5 +19,10 @@ public class ReduceTimeTest {
         assert 256L == rt.power(2, 8);
         assert 512L == rt.power(2, 9);
         assert 1024L == rt.power(2, 10);
+
+        assert 3L == rt.power(3, 1);
+        assert 9L == rt.power(3, 2);
+        assert 27L == rt.power(3, 3);
+        assert 81L == rt.power(3, 4);
     }
 }
